@@ -1,0 +1,38 @@
+version: "%{display_version}"
+
+is_build_required: false
+is_link_independent: false
+
+source:
+  file: "prog"
+  extension: "ll"
+
+run:
+  command: "lli"
+  env:
+    "PATH": "%{install_base}/llvm-%{version}/bin:/usr/bin"
+  allowed_command_line:
+    "-O": { default: [ "2" ], select: [ "0", "1", "2", "3" ] }
+    "-disable-debug-info-verifier": null
+    "-disable-lazy-compilation": null
+    "-disable-spill-fusing": null
+    "-enable-cache-manager": null
+    "-enable-correct-eh-support": null
+    "-enable-misched": null
+    "-enable-tbaa": null
+    "-float-abi": { select: [ "=default", "=soft", "=hard" ] }
+    "-force-interpreter": null
+    "-mc-x86-disable-arith-relaxation": null
+    "-regalloc": { select: [ "=default", "=basic", "=fast", "=greedy", "=pbqp" ] }
+    "-relocation-model": { select: [ "=default", "=static", "=pic", "=dynamic-no-pic" ] }
+    "-soft-float": null
+    "-spiller": { select: [ "=trivial", "=inline" ] }
+    "-time-passes": null
+    "-use-mcjit": null
+    "-verify-dom-info": null
+    "-verify-loop-info": null
+    "-verify-regalloc": null
+    "-verify-scev": null
+    "-help": null
+  fixed_command_line:
+    - " ": "prog.ll"

@@ -1,0 +1,50 @@
+language_id: 1000
+language_proc_version: '2.064.2'
+source: 'source.1.d'
+
+
+build:
+    command_line: ""
+    structured_command_line:
+        null
+    cpu_time_limit: 20
+    memory_limit: 2147483648 #2 * 1024 * 1024 * 1024
+
+    except:
+        compile:
+            status: 4
+            signal: null
+            exit: 0
+            is_record_nullable: false
+            record:
+                out:
+                    ""
+                err:
+                    "hoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\n"
+        link:
+            status: 4
+            signal: null
+            exit: 0
+            is_record_nullable: false
+            record:
+                out:
+                    ""
+                err:
+                    ""
+
+
+runtime:
+    command_line: ""
+    cpu_time_limit: 10
+    memory_limit: 209715200 #200 * 1024 * 1024
+
+    except:
+        status: 4
+        signal: null
+        exit: 0
+        is_record_nullable: false
+        record:
+            out:
+                ""
+            err:
+                ""

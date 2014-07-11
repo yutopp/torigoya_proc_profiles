@@ -1,0 +1,43 @@
+---
+version: 2.064.2
+is_build_required: true
+is_link_independent: true
+source:
+  file: prog
+  extension: d
+compile:
+  file: prog
+  extension: o
+  command: dmd
+  env:
+    PATH: "/usr/local/torigoya/dmd-trunk/bin:/usr/bin"
+    DFLAGS: "-I/usr/local/torigoya/dmd-trunk/include/d2 -L-L/usr/local/torigoya/dmd-trunk/lib
+      -L--no-warn-search-mismatch -L--export-dynamic"
+  allowed_command_line:
+    "-wi": 
+    "-w": 
+    "-release": 
+  fixed_command_line:
+  - - "-c "
+    - prog.d
+  - - "-of"
+    - prog.o
+link:
+  file: prog
+  extension: ''
+  command: dmd
+  env:
+    PATH: "/usr/local/torigoya/dmd-trunk/bin:/usr/bin"
+    DFLAGS: "-I/usr/local/torigoya/dmd-trunk/include/d2 -L-L/usr/local/torigoya/dmd-trunk/lib
+      -L--no-warn-search-mismatch -L--export-dynamic"
+  fixed_command_line:
+  - - " "
+    - prog.o
+  - - "-of"
+    - prog
+run:
+  command: "./prog"
+  env:
+    LD_LIBRARY_PATH: "/usr/local/torigoya/dmd-trunk/lib"
+  allowed_command_line: 
+  fixed_command_line: 

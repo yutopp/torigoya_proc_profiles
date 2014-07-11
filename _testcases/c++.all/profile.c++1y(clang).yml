@@ -1,0 +1,12 @@
+language_id: 125
+language_proc_version: 'trunk-20130721'
+
+compiletime:
+    command_line: "cmdline;ls -hoge=\"`pwd`\""
+    cpu_time_limit: 10
+    memory_limit: 209715200 #200 * 1024 * 1024
+
+runtime:
+    command_line: "cmdline;ls -hoge=\"`pwd`\""
+    cpu_time_limit: 10
+    memory_limit: 209715200 #200 * 1024 * 1024

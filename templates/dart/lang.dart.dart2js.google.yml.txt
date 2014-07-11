@@ -1,0 +1,42 @@
+version: "%{display_version}"
+
+is_build_required: true
+is_link_independent: false
+
+source:
+  file: "prog"
+  extension: "dart"
+
+compile:
+  file: "prog"
+  extension: "js"
+  command: "dart2js"
+  env:
+    "PATH": "%{install_base}/dart-%{version}/bin:/usr/bin"
+  allowed_command_line:
+    "--checked": null
+    "--minify": null
+    "--help": null
+    "--version": null
+    "--suppress-warnings": null
+    "--suppress-hints": null
+    "--terse": null
+    "--verbose": null
+    "--analyze-all": null
+    "--analyze-only": null
+    "--analyze-signatures-only": null
+    "--categories=": { select: [ "Client", "Server" ] }
+  fixed_command_line:
+    - "--out=": "prog.js"
+    - "-p": "%{install_base}/dart-%{version}/lib"
+    - " ": "prog.dart"
+
+run:
+  command: "node"
+  env:
+    "PATH": "%{install_base}/node-trunk/bin:/usr/bin"
+    "LD_LIBRARY_PATH": "$LD_LIBRARY_PATH:%{install_base}/node-trunk/lib"
+  allowed_command_line:
+    null
+  fixed_command_line:
+    - " ": "prog.js"

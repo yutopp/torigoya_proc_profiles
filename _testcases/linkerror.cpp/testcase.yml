@@ -1,0 +1,39 @@
+language_id: 100
+language_proc_version: '4.8.1'
+source: 'source.cpp'
+
+
+build:
+    command_line: ""
+    cpu_time_limit: 10
+    memory_limit: 209715200 #200 * 1024 * 1024
+
+    except:
+        compile:
+            status: 4
+            signal: null
+            exit: 0
+            is_record_nullable: false
+            record:
+                out:
+                    ""
+                err:
+                    ""
+        link:
+            status: 3
+            signal: null
+            exit: 1
+            is_record_nullable: false
+            record:
+                out:
+                    ""
+                err:
+                    "prog.o: In function `main':\nprog.cpp:(.text+0x5): undefined reference to `foo()'\ncollect2: error: ld returned 1 exit status\n"
+
+
+runtime:
+    command_line: "cmdline;ls -hoge=\"`pwd`\""
+    cpu_time_limit: 10
+    memory_limit: 209715200 #200 * 1024 * 1024
+
+    except:

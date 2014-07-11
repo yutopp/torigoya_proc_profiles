@@ -1,0 +1,99 @@
+# languages
+
+
+##########
+-
+  id: 60
+  name: "C (gcc)"
+  runnable: true
+  path: "lang.c.gcc"
+
+-
+  id: 61
+  name: "C (clang)"
+  runnable: true
+  path: "lang.c.clang"
+
+
+##########
+-
+  id: 100
+  name: "C++ (gcc)"
+  runnable: true
+  path: "lang.c++.gcc"
+
+-
+  id: 101
+  name: "C++ (clang)"
+  runnable: true
+  path: "lang.c++.clang"
+
+
+##########
+-
+  id: 500
+  name: "python2"
+  runnable: true
+  path: "lang.python2"
+
+
+##########
+-
+  id: 600
+  name: "LLVM IR"
+  runnable: true
+  path: "lang.llvm-ir.llvm"
+
+
+##########
+-
+  id: 700
+  name: "JavaScript (nodejs)"
+  runnable: true
+  path: "lang.javascript.nodejs"
+
+
+##########
+-
+  id: 800
+  name: "Java9 (OpenJDK)"
+  runnable: true
+  path: "lang.java9.openjdk"
+
+
+##########
+-
+  id: 1000
+  name: "D (dmd)"
+  runnable: true
+  path: "lang.d.dmd"
+
+
+##########
+-
+  id: 1100
+  name: "Dart (DartVM.google)"
+  runnable: true
+  path: "lang.dart.dartvm.google"
+
+-
+  id: 1101
+  name: "Dart (dart2js.google)"
+  runnable: true
+  path: "lang.dart.dart2js.google"
+
+
+##########
+-
+  id: 5000
+  name: "OCaml"
+  runnable: true
+  path: "lang.ocaml.ocaml"
+
+
+##########
+-
+  id: 9999
+  name: "文鳥言語 (Rill)"
+  runnable: true
+  path: "lang.rill.rill"

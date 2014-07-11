@@ -1,0 +1,50 @@
+language_id: 100
+language_proc_version: '4.8.2'
+source: 'source.1.cpp'
+
+
+build:
+    command_line: ""
+    structured_command_line:
+        - "-std=": "c++11"
+    cpu_time_limit: 10
+    memory_limit: 209715200 #200 * 1024 * 1024
+
+    except:
+        compile:
+            status: 4
+            signal: null
+            exit: 0
+            is_record_nullable: false
+            record:
+                out:
+                    ""
+                err:
+                    ""
+        link:
+            status: 4
+            signal: null
+            exit: 0
+            is_record_nullable: false
+            record:
+                out:
+                    ""
+                err:
+                    ""
+
+
+runtime:
+    command_line: "cmdline;ls -hoge=\"`pwd`\""
+    cpu_time_limit: 10
+    memory_limit: 209715200 #200 * 1024 * 1024
+
+    except:
+        status: 4
+        signal: null
+        exit: 0
+        is_record_nullable: false
+        record:
+            out:
+                "Standard output!\n28\n"
+            err:
+                "Error output!\n"

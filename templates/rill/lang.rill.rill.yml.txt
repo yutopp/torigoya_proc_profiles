@@ -1,0 +1,30 @@
+version: "%{display_version}"
+
+is_build_required: true
+is_link_independent: false
+
+source:
+  file: "prog"
+  extension: "rill"
+
+compile:
+  file: "prog"
+  extension: "out"
+  command: "rillc"
+  env:
+    "PATH": "%{install_base}/rill-%{version}/bin:/usr/bin"
+  allowed_command_line:
+    null
+  fixed_command_line:
+    - " ": "prog.rill"
+    - "--rill-rt-lib-path ": "%{install_base}/rill-%{version}/lib/librill-rt.a"
+    - "-o ": "prog.out"
+
+run:
+  command: "./prog.out"
+  env:
+    "LD_LIBRARY_PATH": ""
+  allowed_command_line:
+    null
+  fixed_command_line:
+    null

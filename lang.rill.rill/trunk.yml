@@ -1,0 +1,27 @@
+---
+version: HEAD-2014.4.8.ef5b79a4f0
+is_build_required: true
+is_link_independent: false
+source:
+  file: prog
+  extension: rill
+compile:
+  file: prog
+  extension: out
+  command: rillc
+  env:
+    PATH: "/usr/local/torigoya/rill-trunk/bin:/usr/bin"
+  allowed_command_line: 
+  fixed_command_line:
+  - - " "
+    - prog.rill
+  - - "--rill-rt-lib-path "
+    - "/usr/local/torigoya/rill-trunk/lib/librill-rt.a"
+  - - "-o "
+    - prog.out
+run:
+  command: "./prog.out"
+  env:
+    LD_LIBRARY_PATH: ''
+  allowed_command_line: 
+  fixed_command_line: 

@@ -1,0 +1,62 @@
+---
+version: '3.4'
+is_build_required: false
+is_link_independent: false
+source:
+  file: prog
+  extension: ll
+run:
+  command: lli
+  env:
+    PATH: "/usr/local/torigoya/llvm-3.4/bin:/usr/bin"
+  allowed_command_line:
+    "-O":
+      default:
+      - '2'
+      select:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+    "-disable-debug-info-verifier": 
+    "-disable-lazy-compilation": 
+    "-disable-spill-fusing": 
+    "-enable-cache-manager": 
+    "-enable-correct-eh-support": 
+    "-enable-misched": 
+    "-enable-tbaa": 
+    "-float-abi":
+      select:
+      - "=default"
+      - "=soft"
+      - "=hard"
+    "-force-interpreter": 
+    "-mc-x86-disable-arith-relaxation": 
+    "-regalloc":
+      select:
+      - "=default"
+      - "=basic"
+      - "=fast"
+      - "=greedy"
+      - "=pbqp"
+    "-relocation-model":
+      select:
+      - "=default"
+      - "=static"
+      - "=pic"
+      - "=dynamic-no-pic"
+    "-soft-float": 
+    "-spiller":
+      select:
+      - "=trivial"
+      - "=inline"
+    "-time-passes": 
+    "-use-mcjit": 
+    "-verify-dom-info": 
+    "-verify-loop-info": 
+    "-verify-regalloc": 
+    "-verify-scev": 
+    "-help": 
+  fixed_command_line:
+  - - " "
+    - prog.ll

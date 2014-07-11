@@ -1,0 +1,16 @@
+version: "2.7.5"
+
+is_build_required: false
+
+source:
+  file: "prog"
+  extension: "py"
+
+run:
+  command: "python"
+  env:
+    "PATH": "/usr/bin"
+  allowed_command_line:
+    null
+  fixed_command_line:
+    - " ": "prog.py"

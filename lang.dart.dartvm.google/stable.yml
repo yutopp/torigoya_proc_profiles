@@ -1,0 +1,19 @@
+---
+version: STABLE-2014.4.7
+is_build_required: false
+is_link_independent: false
+source:
+  file: prog
+  extension: dart
+run:
+  command: dart
+  env:
+    PATH: "/usr/local/torigoya/dart-stable/bin:/usr/bin"
+  allowed_command_line:
+    "--checked": 
+    "--version": 
+  fixed_command_line:
+  - - " "
+    - prog.dart
+  - - "-p"
+    - "/usr/local/torigoya/dart-stable/lib"

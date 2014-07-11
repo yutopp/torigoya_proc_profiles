@@ -1,0 +1,49 @@
+---
+version: HEAD-2014.4.9.e912167e7ecf
+is_build_required: true
+is_link_independent: false
+source:
+  file: Prog
+  extension: java
+compile:
+  file: Prog
+  extension: class
+  command: javac
+  env:
+    PATH: "/usr/local/torigoya/java9-trunk/bin:/usr/bin"
+  allowed_command_line:
+  fixed_command_line:
+  - - " "
+    - Prog.java
+  - - "-J-Xms"
+    - 64m
+  - - "-J-Xmx"
+    - 128m
+  - - "-J-Xss"
+    - 512k
+  - - "-J-XX:CompressedClassSpaceSize="
+    - 32M
+  - - "-J-XX:MaxMetaspaceSize="
+    - 128M
+  - - "-J-XX:MetaspaceSize="
+    - 64M
+run:
+  command: java
+  env:
+    PATH: "/usr/local/torigoya/java9-trunk/bin:/usr/bin"
+  allowed_command_line:
+  fixed_command_line:
+  - - "-Xms"
+    - 64m
+  - - "-Xmx"
+    - 128m
+  - - "-Xss"
+    - 512k
+  - - "-XX:CompressedClassSpaceSize="
+    - 32M
+  - - "-XX:MaxMetaspaceSize="
+    - 128M
+  - - "-XX:MetaspaceSize="
+    - 64M
+  - - " "
+    - Prog

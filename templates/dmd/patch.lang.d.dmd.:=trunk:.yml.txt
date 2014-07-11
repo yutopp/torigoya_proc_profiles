@@ -1,0 +1,15 @@
+# 
+
+overwrite:
+  compile:
+    env:
+      "PATH": "%{install_base}/dmd-%{version}/bin:/usr/bin"
+      "DFLAGS": "-I%{install_base}/dmd-%{version}/include/d2 -L-L%{install_base}/dmd-%{version}/lib -L--no-warn-search-mismatch -L--export-dynamic"
+  link:
+    env:
+      "PATH": "%{install_base}/dmd-%{version}/bin:/usr/bin"
+      "DFLAGS": "-I%{install_base}/dmd-%{version}/include/d2 -L-L%{install_base}/dmd-%{version}/lib -L--no-warn-search-mismatch -L--export-dynamic"
+  run:
+    env:
+      "LD_LIBRARY_PATH": "%{install_base}/dmd-%{version}/lib"
+

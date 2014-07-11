@@ -1,0 +1,19 @@
+version: "%{display_version}"
+
+is_build_required: false
+is_link_independent: false
+
+source:
+  file: "prog"
+  extension: "dart"
+
+run:
+  command: "dart"
+  env:
+    "PATH": "%{install_base}/dart-%{version}/bin:/usr/bin"
+  allowed_command_line:
+    "--checked": null
+    "--version": null
+  fixed_command_line:
+    - " ": "prog.dart"
+    - "-p": "%{install_base}/dart-%{version}/lib"
