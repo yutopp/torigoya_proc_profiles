@@ -10,8 +10,8 @@ compile:
   extension: o
   command: dmd
   env:
-    PATH: "/usr/local/torigoya/dmd-trunk/bin:/usr/bin"
-    DFLAGS: "-I/usr/local/torigoya/dmd-trunk/include/d2 -L-L/usr/local/torigoya/dmd-trunk/lib
+    PATH: "/usr/local/torigoya/dmd-2.065.0/bin:/usr/bin"
+    DFLAGS: "-I/usr/local/torigoya/dmd-2.065.0/include/d2 -L-L/usr/local/torigoya/dmd-2.065.0/lib
       -L--no-warn-search-mismatch -L--export-dynamic"
   allowed_command_line:
     "-wi": 
@@ -27,8 +27,8 @@ link:
   extension: ''
   command: dmd
   env:
-    PATH: "/usr/local/torigoya/dmd-trunk/bin:/usr/bin"
-    DFLAGS: "-I/usr/local/torigoya/dmd-trunk/include/d2 -L-L/usr/local/torigoya/dmd-trunk/lib
+    PATH: "/usr/local/torigoya/dmd-2.065.0/bin:/usr/bin"
+    DFLAGS: "-I/usr/local/torigoya/dmd-2.065.0/include/d2 -L-L/usr/local/torigoya/dmd-2.065.0/lib
       -L--no-warn-search-mismatch -L--export-dynamic"
   fixed_command_line:
   - - " "
@@ -38,6 +38,6 @@ link:
 run:
   command: "./prog"
   env:
-    LD_LIBRARY_PATH: "/usr/local/torigoya/dmd-trunk/lib"
+    LD_LIBRARY_PATH: "/usr/local/torigoya/dmd-2.065.0/lib"
   allowed_command_line: 
   fixed_command_line: 
