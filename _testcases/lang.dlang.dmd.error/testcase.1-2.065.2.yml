@@ -1,0 +1,45 @@
+id: 1000
+version: '2.065.2'
+source_files: ['source.1.d']
+
+compile:
+    try:
+        command_line: ""
+        structured_command_line:
+            null
+        cpu: 20
+        memory: 2147483648 #2 * 1024 * 1024 * 1024
+    expect:
+        status: 4
+        signal: null
+        exit: 0
+        stdout:
+            ""
+        stderr:
+            "hoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\nhoge\n"
+
+link:
+    try:
+    expect:
+        status: 4
+        signal: null
+        exit: 0
+        stdout:
+            ""
+        stderr:
+            ""
+
+run:
+    -
+        try:
+            command_line: ""
+            cpu: 10
+            memory: 209715200 #200 * 1024 * 1024
+        except:
+            status: 4
+            signal: null
+            exit: 0
+            stdout:
+                ""
+            stderr:
+                ""

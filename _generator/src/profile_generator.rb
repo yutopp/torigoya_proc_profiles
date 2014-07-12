@@ -120,6 +120,9 @@ module Torigoya
             puts str_data
 
             # write down
+            unless File.exists?(File.dirname(out_path))
+              FileUtils.mkdir_p(File.dirname(out_path))
+            end
             File.open( out_path, "wb" ) do |f|
               f.write( str_data )
             end
