@@ -122,16 +122,15 @@ module Torigoya
             puts str_data
 
             json_out_path = File.join(File.dirname(out_path), "#{File.basename(out_path, ".*")}.json" )
-            p json_out_path
 
             # write
-            unless File.exists?(File.dirname(out_path))
-              FileUtils.mkdir_p(File.dirname(out_path))
+            unless File.exists?(File.dirname(json_out_path))
+              FileUtils.mkdir_p(File.dirname(json_out_path))
             end
 
 
-            File.open( out_path, "wb" ) do |f|
-              f.write( str_data )
+            File.open( json_out_path, "wb" ) do |f|
+              f.write(str_data)
             end
           end
         end
