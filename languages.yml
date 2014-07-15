@@ -36,6 +36,12 @@
   runnable: true
   path: "lang.python2"
 
+##########
+-
+  id: 510
+  name: "ruby"
+  runnable: true
+  path: "lang.ruby.yarv"
 
 ##########
 -

@@ -1,9 +1,10 @@
 # encoding: utf-8
 require 'time'
 require 'yaml'
+require 'json'
 require 'torigoya_kit'
 require_relative 'template_holder'
-
+YAML::ENGINE.yamler = 'psych'
 
 module Torigoya
   module ProcProfileGen
@@ -117,13 +118,18 @@ module Torigoya
 
             validate_and_format( data )
 
-            str_data = YAML.dump( data )
+            str_data = data.to_json
             puts str_data
 
-            # write down
+            json_out_path = File.join(File.dirname(out_path), "#{File.basename(out_path, ".*")}.json" )
+            p json_out_path
+
+            # write
             unless File.exists?(File.dirname(out_path))
               FileUtils.mkdir_p(File.dirname(out_path))
             end
+
+
             File.open( out_path, "wb" ) do |f|
               f.write( str_data )
             end
@@ -133,7 +139,11 @@ module Torigoya
         return template_holders
       end
 
-
+      class Hoge
+        def to_yaml(opt={})
+          return "[ababa]"
+        end
+      end
       private
 
 
@@ -207,8 +217,10 @@ module Torigoya
         raise "is_build_required missed" if data["is_build_required"].nil?
         raise "is_build_required should be Boolean" if !( data["is_build_required"].instance_of?(TrueClass) || data["is_build_required"].instance_of?(FalseClass) )
 
-        raise "is_link_independent missed" if data["is_link_independent"].nil?
-        raise "is_link_independent should be Boolean" if !( data["is_link_independent"].instance_of?(TrueClass) || data["is_link_independent"].instance_of?(FalseClass) )
+        if data["is_build_required"] == true
+          raise "is_link_independent missed" if data["is_link_independent"].nil?
+          raise "is_link_independent should be Boolean" if !( data["is_link_independent"].instance_of?(TrueClass) || data["is_link_independent"].instance_of?(FalseClass) )
+        end
 
         validate_and_format_section( data, "source" )
         validate_and_format_section( data, "compile" )

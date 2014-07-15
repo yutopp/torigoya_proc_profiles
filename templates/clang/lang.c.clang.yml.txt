@@ -12,7 +12,7 @@ compile:
   extension: "o"
   command: "clang"
   env:
-    "PATH": "%{install_base}/clang-%{version}/bin:/usr/bin"
+    "PATH": "%{install_base}/clang.%{version}/bin:/usr/bin"
     "CPATH": "%{install_base}/libc++/include/c++/v1"
   allowed_command_line:
     "-std=": { default: [ "c11" ], select: [ "c11", "gnu11", "c99", "gnu99", "c89", "gnu89" ] }

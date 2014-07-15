@@ -1,0 +1,16 @@
+version: "%{display_version}"
+
+is_build_required: false
+
+source:
+  file: "prog"
+  extension: "rb"
+
+run:
+  command: "ruby"
+  env:
+    "PATH": "%{install_base}/ruby.%{version}/bin"
+  allowed_command_line:
+    null
+  fixed_command_line:
+    - "prog.rb"
