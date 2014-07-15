@@ -1,5 +1,5 @@
 id: 1000
-version: '2.065.2'
+version: '2.065.0'
 source_files: ['source.1.d']
 
 compile:
@@ -35,7 +35,7 @@ run:
             command_line: ""
             cpu: 10
             memory: 209715200 #200 * 1024 * 1024
-        except:
+        expect:
             status: 4
             signal: null
             exit: 0

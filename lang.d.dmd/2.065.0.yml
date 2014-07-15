@@ -10,34 +10,31 @@ compile:
   extension: o
   command: dmd
   env:
-    PATH: "/usr/local/torigoya/dmd-2.065.0/bin:/usr/bin"
-    DFLAGS: "-I/usr/local/torigoya/dmd-2.065.0/include/d2 -L-L/usr/local/torigoya/dmd-2.065.0/lib
-      -L--no-warn-search-mismatch -L--export-dynamic"
+    PATH: "/usr/local/torigoya/dmd.2.065.0/bin64:/usr/bin"
+    DFLAGS: "-I/usr/local/torigoya/dmd.2.065.0/src/phobos -I/usr/local/torigoya/dmd.2.065.0/src/druntime/import
+      -L-L/usr/local/torigoya/dmd.2.065.0/lib64 -L--no-warn-search-mismatch -L--export-dynamic"
   allowed_command_line:
     "-wi": 
     "-w": 
     "-release": 
   fixed_command_line:
-  - - "-c "
+  - - "-c"
     - prog.d
-  - - "-of"
-    - prog.o
+  - - "-ofprog.o"
 link:
   file: prog
   extension: ''
   command: dmd
   env:
-    PATH: "/usr/local/torigoya/dmd-2.065.0/bin:/usr/bin"
-    DFLAGS: "-I/usr/local/torigoya/dmd-2.065.0/include/d2 -L-L/usr/local/torigoya/dmd-2.065.0/lib
-      -L--no-warn-search-mismatch -L--export-dynamic"
+    PATH: "/usr/local/torigoya/dmd.2.065.0/bin64:/usr/bin"
+    DFLAGS: "-I/usr/local/torigoya/dmd.2.065.0/src/phobos -I/usr/local/torigoya/dmd.2.065.0/src/druntime/import
+      -L-L/usr/local/torigoya/dmd.2.065.0/lib64 -L--no-warn-search-mismatch -L--export-dynamic"
   fixed_command_line:
-  - - " "
-    - prog.o
-  - - "-of"
-    - prog
+  - - prog.o
+  - - "-ofprog"
 run:
   command: "./prog"
   env:
-    LD_LIBRARY_PATH: "/usr/local/torigoya/dmd-2.065.0/lib"
+    LD_LIBRARY_PATH: "/usr/local/torigoya/dmd.2.065.0/lib64"
   allowed_command_line: 
   fixed_command_line: 

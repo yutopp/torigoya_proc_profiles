@@ -1,4 +1,6 @@
-// Hisayuki Mima
+void main() {}
+
+/*// Hisayuki Mima
 
 string hoge()
 {
@@ -22,3 +24,4 @@ pragma(msg, hoge);
 pragma(msg, hoge);
 
 void main(){}
+*/

@@ -101,7 +101,8 @@ module Torigoya
                                 end
                 end
 
-                puts "#{holder.tag.version} #{pt['target_version_op']} #{pt['target_version']} => #{applicable}"
+                puts "PATCH: #{holder.tag.version} #{pt['target_version_op']} #{pt['target_version']} #=> #{applicable}"
+                next unless applicable
 
                 unless pt['data']['overwrite'].nil?
                   value_overwrite( nil, data, pt['data']['overwrite'] )
@@ -253,8 +254,28 @@ module Torigoya
             raise "fixed_command_line should be Array [#{name}]" if !data[name]["fixed_command_line"].instance_of?(Array)
             arrays = []
             data[name]["fixed_command_line"].each do |v|
-              raise "only one k/v can be includes" if v.size != 1
-              arrays << v.to_a[0]
+              if v.is_a?(Hash)
+                raise "only one k/v can be includes" if v.size != 1
+                fl = v.flatten
+                p fl
+                if fl.length == 2
+                  unless fl[0] == ""
+                    arrays << fl
+                  else
+                    arrays << [fl[1]]
+                  end
+                else
+                  raise "null string can not be included" if fl[0] == ""
+                  arrays << fl
+                end
+              elsif v.is_a?(Array)
+                raise "only one k/v can be includes" if v.length != 1 && v.length != 2
+                arrays << v
+              elsif v.is_a?(String)
+                arrays << [v]
+              else
+                raise "only Hash/Array/String types are accepted" if v.size != 1
+              end
             end
             data[name]["fixed_command_line"] = arrays
           end

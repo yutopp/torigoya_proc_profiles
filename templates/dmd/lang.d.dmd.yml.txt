@@ -12,31 +12,31 @@ compile:
   extension: "o"
   command: "dmd"
   env:
-    "PATH": "%{install_base}/dmd-%{version}/bin64:/usr/bin"
-    "DFLAGS": "-I%{install_base}/dmd-%{version}/src/phobos -I%{install_base}/dmd-%{version}/src/druntime/import -L-L%{install_base}/dmd-%{version}/lib64 -L--no-warn-search-mismatch -L--export-dynamic"
+    "PATH": "%{install_base}/dmd.%{version}/bin64:/usr/bin"
+    "DFLAGS": "-I%{install_base}/dmd.%{version}/src/phobos -I%{install_base}/dmd.%{version}/src/druntime/import -L-L%{install_base}/dmd.%{version}/lib64 -L--no-warn-search-mismatch -L--export-dynamic"
   allowed_command_line:
     "-wi": null
     "-w": null
     "-release": null
   fixed_command_line:
-    - "-c ": "prog.d"
-    - "-of": "prog.o"
+    - "-c": "prog.d"
+    - "-ofprog.o"
 
 link:
   file: "prog"
   extension: ""
   command: "dmd"
   env:
-    "PATH": "%{install_base}/dmd-%{version}/bin64:/usr/bin"
-    "DFLAGS": "-I%{install_base}/dmd-%{version}/src/phobos -I%{install_base}/dmd-%{version}/src/druntime/import -L-L%{install_base}/dmd-%{version}/lib64 -L--no-warn-search-mismatch -L--export-dynamic"
+    "PATH": "%{install_base}/dmd.%{version}/bin64:/usr/bin"
+    "DFLAGS": "-I%{install_base}/dmd.%{version}/src/phobos -I%{install_base}/dmd.%{version}/src/druntime/import -L-L%{install_base}/dmd.%{version}/lib64 -L--no-warn-search-mismatch -L--export-dynamic"
   fixed_command_line:
-    - " ": "prog.o"
-    - "-of": "prog"
+    - "": "prog.o"
+    - "-ofprog"
 
 run:
   command: "./prog"
   env:
-    "LD_LIBRARY_PATH": "%{install_base}/dmd-%{version}/lib64"
+    "LD_LIBRARY_PATH": "%{install_base}/dmd.%{version}/lib64"
   allowed_command_line:
     null
   fixed_command_line:
