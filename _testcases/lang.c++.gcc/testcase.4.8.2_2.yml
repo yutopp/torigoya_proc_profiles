@@ -1,0 +1,21 @@
+id: 100
+version: '4.8.2'
+source_files: ['s.2.cpp']
+
+
+compile:
+    try:
+        command_line: ""
+        structured_command_line:
+            - "-std=": "c++11"
+        cpu: 10
+        memory: 209715200 #200 * 1024 * 1024
+
+    expect:
+        status: 3
+        signal: null
+        exit: 1
+        stdout:
+            ""
+        stderr:
+            "prog.cpp:1:10: error: 'string' was not declared in this scope\n int main(string) { // compile error\n          ^\nprog.cpp:1:18: error: expected ',' or ';' before '{' token\n int main(string) { // compile error\n                  ^\n"

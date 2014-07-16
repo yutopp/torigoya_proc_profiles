@@ -12,8 +12,8 @@ compile:
   extension: "o"
   command: "clang++"
   env:
-    "PATH": "%{install_base}/clang-%{version}/bin:/usr/bin"
-    "CPATH": "%{install_base}/libc++-trunk/include/c++/v1"
+    "PATH": "%{install_base}/clang.%{version}/bin:/usr/bin"
+    "CPATH": "%{install_base}/libc++.head/include/c++/v1"
   allowed_command_line:
     "-std=": { default: [ "c++11" ], select: [ "c++1y", "gnu++1y", "c++11", "gnu++11", "c++98", "gnu++98" ] }
     "-ftemplate-depth=": { select: [ "512", "1024", "2048", "4096" ] }
@@ -30,20 +30,20 @@ link:
   extension: "out"
   command: "clang++"
   env:
-    "PATH": "%{install_base}/clang-%{version}/bin:/usr/bin"
-    "LD_LIBRARY_PATH": "%{install_base}/libc++-trunk/lib"
-    "CPATH": "%{install_base}/libc++-trunk/include/c++/v1"
+    "PATH": "%{install_base}/clang.%{version}/bin:/usr/bin"
+    "LD_LIBRARY_PATH": "%{install_base}/libc++.head/lib"
+    "CPATH": "%{install_base}/libc++.head/include/c++/v1"
   fixed_command_line:
-    - " ": "prog.o"
+    - "prog.o"
     - "-o ": "prog.out"
     - "-stdlib=": "libc++"
-    - "-L": "%{install_base}/libc++-trunk/lib"
-    - "-l": "pthread"
+    - "-L ": "%{install_base}/libc++.head/lib"
+    - "-l ": "pthread"
 
 run:
   command: "./prog.out"
   env:
-    "LD_LIBRARY_PATH": "%{install_base}/libc++-trunk/lib"
+    "LD_LIBRARY_PATH": "%{install_base}/libc++.head/lib"
   allowed_command_line:
     null
   fixed_command_line:

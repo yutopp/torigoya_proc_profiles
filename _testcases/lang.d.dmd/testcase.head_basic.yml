@@ -1,0 +1,45 @@
+id: 1000
+version: '!=head'
+source_files: ['s.basic.d']
+
+compile:
+    try:
+        command_line: ""
+        structured_command_line:
+            null
+        cpu: 20
+        memory: 2147483648 #2 * 1024 * 1024 * 1024
+    expect:
+        status: 4
+        signal: null
+        exit: 0
+        stdout:
+            ""
+        stderr:
+            ""
+
+link:
+    try:
+    expect:
+        status: 4
+        signal: null
+        exit: 0
+        stdout:
+            ""
+        stderr:
+            ""
+
+run:
+    -
+        try:
+            command_line: ""
+            cpu: 10
+            memory: 209715200 #200 * 1024 * 1024
+        expect:
+            status: 4
+            signal: null
+            exit: 0
+            stdout:
+                "Hello Torigoya"
+            stderr:
+                ""

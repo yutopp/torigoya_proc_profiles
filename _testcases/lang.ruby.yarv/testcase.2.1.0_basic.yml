@@ -1,6 +1,6 @@
 id: 510
 version: '2.1.0'
-source_files: ['source.1.rb']
+source_files: ['s.basic.rb']
 
 run:
     -

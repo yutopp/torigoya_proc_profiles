@@ -10,9 +10,9 @@ source:
 compile:
   file: "prog"
   extension: "o"
-  command: "gcc-%{version}"
+  command: "gcc"
   env:
-    "PATH": "%{install_base}/gcc-%{version}/bin:/usr/bin"
+    "PATH": "%{install_base}/gcc.%{version}/bin:/usr/bin"
   allowed_command_line:
     "-std=": { default: [ "c99" ], select: [ "c99" ] }
     "-O": { default: [ "2" ], select: [ "0", "1", "2", "3" ] }
@@ -26,20 +26,20 @@ compile:
 link:
   file: "prog"
   extension: "out"
-  command: "gcc-%{version}"
+  command: "gcc"
   env:
-    "PATH": "%{install_base}/gcc-%{version}/bin:/usr/bin"
-    "LD_RUN_PATH": "%{install_base}/gcc-%{version}/lib/../lib64"
+    "PATH": "%{install_base}/gcc.%{version}/bin:/usr/bin"
+    "LD_RUN_PATH": "%{install_base}/gcc.%{version}/lib/../lib64"
   fixed_command_line:
-    - "-L": "%{install_base}/gcc-%{version}/lib/../lib64"
-    - "-Wl,-rpath -Wl,": "%{install_base}/gcc-%{version}/lib/../lib64"
-    - " ": "prog.o"
+    - "-L": "%{install_base}/gcc.%{version}/lib/../lib64"
+    - "-Wl,-rpath ": "-Wl,%{install_base}/gcc.%{version}/lib/../lib64"
+    - "prog.o"
     - "-o ": "prog.out"
 
 run:
   command: "./prog.out"
   env:
-    "LD_LIBRARY_PATH": "%{install_base}/gcc-%{version}/lib/../lib64"
+    "LD_LIBRARY_PATH": "%{install_base}/gcc.%{version}/lib/../lib64"
   allowed_command_line:
     null
   fixed_command_line:

@@ -1,0 +1,18 @@
+id: 101
+version: '!=head'
+source_files: ['s.2.cpp']
+
+compile:
+    try:
+        command_line: ""
+        cpu: 10
+        memory: 209715200 #200 * 1024 * 1024
+
+    except:
+        status: 3
+        signal: null
+        exit: 1
+        stdout:
+            ""
+        stderr:
+            "prog.cpp:1:10: error: unknown type name 'string'\nint main(string) { // compile error\n         ^\nprog.cpp:2:5: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]\n    auto const a = 72;\n    ^\nprog.cpp:3:7: error: read-only variable is not assignable\n    a = 42; // compile error\n    ~ ^\nprog.cpp:5:12: warning: implicit conversion from 'double' to 'int' changes value from 3.14 to 3 [-Wliteral-conversion]\n    return 3.14; // comile error\n    ~~~~~~ ^~~~\n2 warnings and 2 errors generated.\n"

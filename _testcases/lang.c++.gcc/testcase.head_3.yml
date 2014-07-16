@@ -1,0 +1,46 @@
+id: 100
+version: '!=head'
+source_files: ['s.3.cpp']
+
+
+compile:
+    try:
+        command_line: ""
+        structured_command_line:
+            - "-std=": "c++1y"
+        cpu: 10
+        memory: 209715200 #200 * 1024 * 1024
+
+    expect:
+        status: 4
+        signal: null
+        exit: 0
+        stdout: ""
+        stderr: ""
+
+link:
+    try:
+    expect:
+        status: 4
+        signal: null
+        exit: 0
+        stdout: ""
+        stderr: ""
+
+
+run:
+    -
+        try:
+            command_line: "cmdline;ls -hoge=\"`pwd`\""
+            cpu: 10
+            memory: 209715200 #200 * 1024 * 1024
+
+        expect:
+            status: 4
+            signal: null
+            exit: 0
+            record:
+            stdout:
+                "170\n72\n"
+            stderr:
+                ""
