@@ -15,6 +15,22 @@ module Torigoya
       end
       attr_reader :config
 
+      #
+      def remove_dirs
+        Dir.chdir(@config.proc_profiles_root_dir) do
+          Dir.glob( "lang.*" ) do |dirname|
+            if File.directory?(dirname)
+              puts "Deleting... : #{dirname}"
+              r = system("rm -rf #{dirname}")
+              if r
+                puts "  ok!"
+              else
+                puts "  FAILED..."
+              end
+            end
+          end
+        end
+      end
 
       #
       def generate()
@@ -127,7 +143,6 @@ module Torigoya
             unless File.exists?(File.dirname(json_out_path))
               FileUtils.mkdir_p(File.dirname(json_out_path))
             end
-
 
             File.open( json_out_path, "wb" ) do |f|
               f.write(str_data)

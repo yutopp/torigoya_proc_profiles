@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# check existence of bundler
 which bundle &> /dev/null
 if [ $? != 0 ]; then
     echo "generate error: please install 'bundler' gem package"
@@ -11,4 +12,4 @@ if [ ! -e vendor ]; then
     bundle install --path vendor/bundler || exit -1
 fi
 
-bundle exec ruby generate-profiles.rb
+bundle exec ruby generate-profiles.rb "$@"
