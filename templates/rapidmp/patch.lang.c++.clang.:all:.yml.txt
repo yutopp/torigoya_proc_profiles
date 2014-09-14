@@ -1,0 +1,9 @@
+# add rapidmp libaries to another compiler
+
+update:
+  null
+
+push_back:
+  compile:
+    allowed_command_line:
+      "-I": { select: [ "%{install_base}/rapidmp.%{version}/include" ] }
