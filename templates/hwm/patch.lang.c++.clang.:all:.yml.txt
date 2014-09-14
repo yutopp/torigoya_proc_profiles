@@ -1,0 +1,9 @@
+# add hwm libaries to another compiler
+
+update:
+  null
+
+push_back:
+  compile:
+    allowed_command_line:
+      "-I": { select: [ "%{install_base}/hwm.%{version}/include" ] }
