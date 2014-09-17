@@ -30,7 +30,7 @@ opt.parse!(ARGV)
 if available_package_table.nil?
   puts "Please specify one of these options."
   puts "  -l  : Read local files"
-  puts "  -r  : Read remote files"
+  puts "  -r [VAL]  : Read remote files(false: use cache)"
   exit -1
 end
 
