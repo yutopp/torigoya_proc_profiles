@@ -13,7 +13,7 @@ compile:
   command: "clang"
   env:
     "PATH": "%{install_base}/clang.%{version}/bin:/usr/bin"
-    "CPATH": "%{install_base}/libc++/include/c++/v1"
+    "CPATH": "%{install_base}/libc++.%{version}/include/c++/v1"
   allowed_command_line:
     "-std=": { default: [ "c11" ], select: [ "c11", "gnu11", "c99", "gnu99", "c89", "gnu89" ] }
     "-O": { default: [ "2" ], select: [ "0", "1", "2", "3" ] }
@@ -29,20 +29,20 @@ link:
   extension: "out"
   command: "clang"
   env:
-    "PATH": "%{install_base}/clang-%{version}/bin:/usr/bin"
-    "LD_LIBRARY_PATH": "%{install_base}/libc++/lib"
-    "CPATH": "%{install_base}/libc++/include/c++/v1"
+    "PATH": "%{install_base}/clang.%{version}/bin:/usr/bin"
+    "LD_LIBRARY_PATH": "%{install_base}/libc++.%{version}/lib"
+    "CPATH": "%{install_base}/libc++.%{version}/include/c++/v1"
   fixed_command_line:
     - " ": "prog.o"
     - "-o ": "prog.out"
     - "-stdlib=": "libc++"
-    - "-L": "%{install_base}/libc++/lib"
+    - "-L": "%{install_base}/libc++.%{version}/lib"
     - "-l": "pthread"
 
 run:
   command: "./prog.out"
   env:
-    "LD_LIBRARY_PATH": "%{install_base}/libc++/lib"
+    "LD_LIBRARY_PATH": "%{install_base}/libc++.%{version}/lib"
   allowed_command_line:
     null
   fixed_command_line:
