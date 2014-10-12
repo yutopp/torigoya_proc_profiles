@@ -12,7 +12,7 @@ compile:
   extension: "cmo"
   command: "ocamlc"
   env:
-    "PATH": "%{install_base}/ocaml-%{version}/bin:/usr/bin"
+    "PATH": "%{install_base}/ocaml.%{version}/bin:/usr/bin"
   allowed_command_line:
     "-principal": null
     "-rectypes": null
@@ -25,7 +25,7 @@ link:
   extension: "out"
   command: "ocamlc"
   env:
-    "PATH": "%{install_base}/ocaml-%{version}/bin:/usr/bin"
+    "PATH": "%{install_base}/ocaml.%{version}/bin:/usr/bin"
   fixed_command_line:
     - " ": "prog.cmo"
     - "-o ": "prog.out"
@@ -33,7 +33,7 @@ link:
 run:
   command: "./prog.out"
   env:
-    "LD_LIBRARY_PATH": "%{install_base}/ocaml-%{version}/lib"
+    "LD_LIBRARY_PATH": "%{install_base}/ocaml.%{version}/lib"
   allowed_command_line:
     null
   fixed_command_line:
