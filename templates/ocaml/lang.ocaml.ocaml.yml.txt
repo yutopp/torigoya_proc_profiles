@@ -27,7 +27,7 @@ link:
   env:
     "PATH": "%{install_base}/ocaml.%{version}/bin:/usr/bin"
   fixed_command_line:
-    - " ": "prog.cmo"
+    - "prog.cmo"
     - "-o ": "prog.out"
 
 run:
