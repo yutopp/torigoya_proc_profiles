@@ -4,3 +4,4 @@ Gemfile.lock
 vendor
 
 packages.sc.yutopp.net
+lang.*/

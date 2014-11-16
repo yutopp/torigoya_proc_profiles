@@ -9,8 +9,12 @@ available_package_table = nil
 
 #
 opt = OptionParser.new
-opt.on('-l') do
-  available_package_table = File.join(File.dirname(File.expand_path(__FILE__)), "../../torigoya_factory/apt_repository/available_package_table")
+opt.on('-l [VAL]') do |v|
+  available_package_table = if v.nil?
+                              File.join(File.dirname(File.expand_path(__FILE__)), "../../torigoya_factory/apt_repository/available_package_table")
+                            else
+                              v
+                            end
 end
 
 opt.on('-r [VAL]') do |v|
@@ -29,8 +33,8 @@ opt.parse!(ARGV)
 
 if available_package_table.nil?
   puts "Please specify one of these options."
-  puts "  -l  : Read local files"
-  puts "  -r [VAL]  : Read remote files(false: use cache)"
+  puts "  -l [PATH=defaul] : Read local files"
+  puts "  -r [WITH_UPDATE]  : Read remote files(false: use cache)"
   exit -1
 end
 
