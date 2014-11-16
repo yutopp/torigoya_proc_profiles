@@ -86,7 +86,7 @@ module Torigoya
           holder.templates.each do |template|
             next if template['is_patch']
 
-            out_path = "#{@config.proc_profiles_root_dir}/#{template['name']}"
+            out_path = File.join(@config.proc_profiles_root_dir, template['name'])
 
             puts '', '#' * 60
             puts template['target_name']
