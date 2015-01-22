@@ -16,11 +16,11 @@ compile:
   allowed_command_line:
     null
   fixed_command_line:
-    - "-J-Xms": "64m"
-    - "-J-Xmx": "128m"
-    - "-J-Xss": "512k"
-    - "-J-XX:CompressedClassSpaceSize=": "32M"
-    - "-J-XX:MaxMetaspaceSize=": "128M"
+    - "-J-Xms": "256M"
+    - "-J-Xmx": "512M"
+    - "-J-Xss": "1M"
+    - "-J-XX:CompressedClassSpaceSize=": "128M"
+    - "-J-XX:MaxMetaspaceSize=": "256M"
     - "-J-XX:MetaspaceSize=": "64M"
     - "-J-Dfile.encoding=": "UTF-8"
     - " ": "-client"
