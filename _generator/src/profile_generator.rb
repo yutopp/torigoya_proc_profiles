@@ -4,7 +4,6 @@ require 'yaml'
 require 'json'
 require 'torigoya_kit'
 require_relative 'template_holder'
-YAML::ENGINE.yamler = 'psych'
 
 module Torigoya
   module ProcProfileGen

@@ -62,6 +62,14 @@
 ##########
 -
   id: 800
+  name: "Java8 (OpenJDK)"
+  runnable: true
+  path: "lang.java8.openjdk"
+
+
+##########
+-
+  id: 810
   name: "Java9 (OpenJDK)"
   runnable: true
   path: "lang.java9.openjdk"

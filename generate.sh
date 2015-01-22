@@ -8,7 +8,7 @@ if [ $? != 0 ]; then
 fi
 
 cd _generator || exit -1
-if [ ! -e vendor ]; then
+if [ ! -e Gemfile ]; then
     bundle install --path vendor/bundler || exit -1
 fi
 
