@@ -23,7 +23,6 @@ compile:
     - "-J-XX:MaxMetaspaceSize=": "256M"
     - "-J-XX:MetaspaceSize=": "64M"
     - "-J-Dfile.encoding=": "UTF-8"
-    - " ": "-client"
     - " ": "Prog.java"
 
 run:
@@ -40,5 +39,4 @@ run:
     - "-XX:MaxMetaspaceSize=": "128M"
     - "-XX:MetaspaceSize=": "64M"
     - "-Dfile.encoding=": "UTF-8"
-    - " ": "-client"
     - " ": "Prog"
