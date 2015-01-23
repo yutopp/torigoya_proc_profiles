@@ -4,11 +4,11 @@ is_build_required: true
 is_link_independent: false
 
 source:
-  file: "Prog"
+  file: "Main"
   extension: "java"
 
 compile:
-  file: "Prog"
+  file: "Main"
   extension: "class"
   command: "javac"
   env:
@@ -23,7 +23,7 @@ compile:
     - "-J-XX:MaxMetaspaceSize=": "256M"
     - "-J-XX:MetaspaceSize=": "64M"
     - "-J-Dfile.encoding=": "UTF-8"
-    - "Prog.java"
+    - "Main.java"
 
 run:
   command: "java"
@@ -39,4 +39,4 @@ run:
     - "-XX:MaxMetaspaceSize=": "256M"
     - "-XX:MetaspaceSize=": "64M"
     - "-Dfile.encoding=": "UTF-8"
-    - "Prog"
+    - "Main"
