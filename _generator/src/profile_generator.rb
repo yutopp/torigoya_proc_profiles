@@ -99,7 +99,7 @@ module Torigoya
 
             # patching
             patch_templates.each do |pt|
-              if pt['target_name'] == template['target_name']
+              if pt['target_name'] == template['target_name'] && pt['target_version_op'].nil? || pt['name'] == template['name']
                 applicable = false
                 applicable |= pt['target_version_op'].nil?
                 unless pt['target_version_op'].nil?
