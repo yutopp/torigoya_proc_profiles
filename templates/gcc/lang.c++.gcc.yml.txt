@@ -30,7 +30,8 @@ link:
   command: "g++"
   env:
     "PATH": "%{install_base}/gcc.%{version}/bin:/usr/bin"
-    "LD_RUN_PATH": "%{install_base}/gcc.%{version}/lib/../lib64"
+    "LD_RUN_PATH": "%{install_base}/gcc.%{version}/lib/../lib64:%{install_base}/gcc.%{version}/lib"
+    "LD_LIBRARY_PATH": "%{install_base}/gcc.%{version}/lib/../lib64:%{install_base}/gcc.%{version}/lib"
   fixed_command_line:
     - "-L": "%{install_base}/gcc.%{version}/lib/../lib64"
     - "-Wl,-rpath ": "-Wl,%{install_base}/gcc.%{version}/lib/../lib64"
