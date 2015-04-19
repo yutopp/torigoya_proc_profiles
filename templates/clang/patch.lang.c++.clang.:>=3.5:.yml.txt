@@ -1,0 +1,12 @@
+# add some options for clang 3.5 and later
+
+overwrite:
+  compile:
+    allowed_command_line:
+      "-std=": { select: [ "c++98", "gnu++98", "c++11", "gnu++11" ] }
+
+push_back:
+  compile:
+    allowed_command_line:
+      "-std=": { select: [ "c++14", "gnu++14", "c++1z", "gnu++1z"] }
+      "-fstack-protector": { select: [ "-strong" ] }

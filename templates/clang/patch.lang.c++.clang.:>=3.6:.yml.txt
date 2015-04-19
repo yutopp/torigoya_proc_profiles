@@ -1,0 +1,10 @@
+# add some options for clang 3.6 and later
+
+overwrite:
+  null
+
+push_back:
+  compile:
+    allowed_command_line:
+      "-fmax-type-align=": { select: [ "64", "128", "256", "512", "1024" ] }
+      "-fno-trigraphs": null

@@ -13,14 +13,47 @@ compile:
   command: "clang++"
   env:
     "PATH": "%{install_base}/clang.%{version}/bin:/usr/bin"
-    "CPATH": "%{install_base}/libc++.%{version}/include/c++/v1"
+    "CPATH": "%{install_base}/clang.%{version}/include/c++/v1"
   allowed_command_line:
-    "-std=": { default: [ "c++11" ], select: [ "c++1y", "gnu++1y", "c++11", "gnu++11", "c++98", "gnu++98" ] }
+    "-std=": { default: [ "c++11" ], select: [ "c++98", "gnu++98", "c++11", "gnu++11" ] }
     "-ftemplate-depth=": { select: [ "512", "1024", "2048", "4096" ] }
     "-O": { default: [ "2" ], select: [ "0", "1", "2", "3" ] }
-    "-W": { default: [ "all", "extra" ], select: [ "all", "extra" ] }
+    "-W": { default: [ "all", "extra" ], select: [ "all", "extra", "error", "everything" ] }
     "-E": null
     "-P": null
+    "-fblocks": null
+    "-fborland-extensions": null
+    "-fcxx-exceptions": null
+    "-fdelayed-template-parsing": null
+    "-fdiagnostics-show-note-include-stack": null
+    "-fdiagnostics-show-template-tree": null
+    "-fexceptions": null
+    "-ffast-math": null
+    "-fgnu-keywords": null
+    "-fgnu89-inline": null
+    "-fmath-errno": null
+    "-fno-elide-type": null
+    "-fno-math-builtin": null
+    "-fno-reroll-loops": null
+    "-fno-rtti": null
+    "-fno-show-column": null
+    "-fno-show-source-location": null
+    "-fno-signed-char": null
+    "-fno-signed-zeros": null
+    "-funroll-loops": null
+    "-freroll-loops": null
+    "-fshort-enums": null
+    "-fslp-vectorize-aggressive": null
+    "-fslp-vectorize": null
+    "-fstack-protector": { select: [ "", "-all" ] }
+    "-fstrict-enums": null
+    "-fvectorize": null
+    "-g": null
+    "-H": null
+    "-w": null
+    "-pedantic": { select: [ "", "-errors" ] }
+    "-ftime-report": null
+    "-v": null
   fixed_command_line:
     - "-c ": "prog.cpp"
     - "-o ": "prog.o"
@@ -31,19 +64,21 @@ link:
   command: "clang++"
   env:
     "PATH": "%{install_base}/clang.%{version}/bin:/usr/bin"
-    "LD_LIBRARY_PATH": "%{install_base}/libc++.%{version}/lib"
-    "CPATH": "%{install_base}/libc++.%{version}/include/c++/v1"
+    "LD_LIBRARY_PATH": "%{install_base}/clang.%{version}/lib"
+    "CPATH": "%{install_base}/clang.%{version}/include/c++/v1"
   fixed_command_line:
     - "prog.o"
     - "-o ": "prog.out"
     - "-stdlib=": "libc++"
-    - "-L ": "%{install_base}/libc++.%{version}/lib"
+    - "-L ": "%{install_base}/clang.%{version}/lib"
     - "-l ": "pthread"
+    - "-l ": "c++"
+    - "-l ": "c++abi"
 
 run:
   command: "./prog.out"
   env:
-    "LD_LIBRARY_PATH": "%{install_base}/libc++.%{version}/lib"
+    "LD_LIBRARY_PATH": "%{install_base}/clang.%{version}/lib"
   allowed_command_line:
     null
   fixed_command_line:
