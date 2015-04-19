@@ -53,7 +53,8 @@ module Torigoya
 
                   templates << {
                     'name' => "#{target_name}/#{tag.version}.yml",
-                    'data' => YAML.load( value % replace_hash ),
+                    'data' => value,
+                    'replace_hash' => replace_hash,
                     'is_patch' => is_patch,
                     'target_name' => target_name,
                     'target_version_op' => target_version_op,
