@@ -1,0 +1,11 @@
+# add some options for gcc 5.1.0 and later
+
+overwrite:
+  compile:
+    allowed_command_line:
+      "-std=": { select: [ "c++98", "gnu++98", "c++11", "gnu++11" ] }
+
+push_back:
+  compile:
+    allowed_command_line:
+      "-std=": { select: [ "c++14", "gnu++14"] }

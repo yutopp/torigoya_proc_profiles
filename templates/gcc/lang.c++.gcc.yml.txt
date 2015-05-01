@@ -14,7 +14,7 @@ compile:
   env:
     "PATH": "%{install_base}/gcc.%{version}/bin:/usr/bin"
   allowed_command_line:
-    "-std=": { default: ["c++11"], select: [ "c++11", "c++1y" ] }
+    "-std=": { default: ["c++11"], select: [ "c++98", "gnu++98", "c++11", "gnu++11" ] }
     "-ftemplate-depth=": { select: [ "512", "1024", "2048", "4096" ] }
     "-O": { default: [ "2" ], select: [ "0", "1", "2", "3" ] }
     "-W": { default: [ "all", "extra" ], select: [ "all", "extra" ] }
@@ -30,7 +30,8 @@ link:
   command: "g++"
   env:
     "PATH": "%{install_base}/gcc.%{version}/bin:/usr/bin"
-    "LD_RUN_PATH": "%{install_base}/gcc.%{version}/lib/../lib64"
+    "LD_RUN_PATH": "%{install_base}/gcc.%{version}/lib/../lib64:%{install_base}/gcc.%{version}/lib"
+    "LD_LIBRARY_PATH": "%{install_base}/gcc.%{version}/lib/../lib64:%{install_base}/gcc.%{version}/lib"
   fixed_command_line:
     - "-L": "%{install_base}/gcc.%{version}/lib/../lib64"
     - "-Wl,-rpath ": "-Wl,%{install_base}/gcc.%{version}/lib/../lib64"

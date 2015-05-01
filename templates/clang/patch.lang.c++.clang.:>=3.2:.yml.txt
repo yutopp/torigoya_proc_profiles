@@ -1,0 +1,9 @@
+# add some options for clang 3.2 and later
+
+overwrite:
+  null
+
+push_back:
+  compile:
+    allowed_command_line:
+      "-std=": { select: [ "c++1y", "gnu++1y" ] }

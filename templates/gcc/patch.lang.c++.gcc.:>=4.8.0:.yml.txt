@@ -1,0 +1,9 @@
+# add some options for gcc 4.8.0 and later
+
+overwrite:
+  null
+
+push_back:
+  compile:
+    allowed_command_line:
+      "-std=": { select: [ "c++1y", "gnu++1y" ] }

@@ -95,11 +95,11 @@ module Torigoya
             puts "package_name      : #{holder.tag.package_name}"
             puts "writing config    -> #{out_path}"
 
-            data = template['data']
+            data = YAML.load(template['data'] % template['replace_hash'])
 
             # patching
             patch_templates.each do |pt|
-              if pt['target_name'] == template['target_name']
+              if pt['target_name'] == template['target_name'] && pt['target_version_op'].nil? || pt['name'] == template['name']
                 applicable = false
                 applicable |= pt['target_version_op'].nil?
                 unless pt['target_version_op'].nil?
@@ -120,12 +120,16 @@ module Torigoya
                 puts "PATCH: #{holder.tag.version} #{pt['target_version_op']} #{pt['target_version']} #=> #{applicable}"
                 next unless applicable
 
-                unless pt['data']['overwrite'].nil?
-                  value_overwrite( nil, data, pt['data']['overwrite'] )
+                pt_replace_hash = pt['replace_hash']
+                pt_replace_hash[:target_name] = holder.tag.name
+                pt_replace_hash[:target_version] = holder.tag.version
+                pt_data = YAML.load(pt['data'] % pt_replace_hash)
+                unless pt_data['overwrite'].nil?
+                  value_overwrite( nil, data, pt_data['overwrite'] )
                 end
 
-                unless pt['data']['push_back'].nil?
-                  value_push_pack( nil, data, pt['data']['push_back'] )
+                unless pt_data['push_back'].nil?
+                  value_push_pack( nil, data, pt_data['push_back'] )
                 end
 
               end

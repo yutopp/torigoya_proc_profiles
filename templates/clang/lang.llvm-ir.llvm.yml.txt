@@ -10,7 +10,7 @@ source:
 run:
   command: "lli"
   env:
-    "PATH": "%{install_base}/llvm-%{version}/bin:/usr/bin"
+    "PATH": "%{install_base}/clang.%{version}/bin:/usr/bin"
   allowed_command_line:
     "-O": { default: [ "2" ], select: [ "0", "1", "2", "3" ] }
     "-disable-debug-info-verifier": null
